@@ -1,7 +1,7 @@
 eq = [[-0.2, 10, 50, 13.7],
       [0, 4.9, -6, -1],
-      [7, 65.43, 9.9, 4.678],
-      [123, 4.98, -13, -18.99]]#the main matrix
+      [7, 65.43, 0, 4.678],
+      [0, 4.98, -13, -18.99]]#the main matrix
 
 va1 = [6.2, -59, 345, -400]#vector b in Ax=b
 
@@ -14,7 +14,7 @@ def print_mat(ls):#print the matrix
 def ordering_matrix(m1, m2):
     for j in range(len(m1)):
         for i in range(j, len(m1)):
-            if absm1[i][j] > m1[j][j]:
+            if abs(m1[i][j]) > abs(m1[j][j]):
                 temp_list = m1[j]
                 m1[j] = m1[i]
                 m1[i] = temp_list
