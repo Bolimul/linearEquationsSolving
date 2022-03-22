@@ -1,15 +1,27 @@
-eq = [[2, 2, 3, 6],
-      [4, 5, 6, 12],
-      [7, 8, 10, 20],
-      [11, 12, 13, 27]]#the main matrix
+eq = [[-0.2, 10, 50, 13.7],
+      [0, 4.9, -6, -1],
+      [7, 65.43, 9.9, 4.678],
+      [123, 4.98, -13, -18.99]]#the main matrix
 
-va1 = [100, 200, 300, 400]#vector b in Ax=b
+va1 = [6.2, -59, 345, -400]#vector b in Ax=b
 
 
 def print_mat(ls):#print the matrix
     for i in ls:
         print(f'{i}')
     print('\n')
+
+def ordering_matrix(m1, m2):
+    for j in range(len(m1)):
+        for i in range(j, len(m1)):
+            if absm1[i][j] > m1[j][j]:
+                temp_list = m1[j]
+                m1[j] = m1[i]
+                m1[i] = temp_list
+                temp_num = m2[j]
+                m2[j] = m2[i]
+                m2[i] = temp_num
+
 
 def print_mul(m1, m2):#print the matrix in multiplivation
     length = len(m1)
@@ -68,20 +80,20 @@ def make_matrix_unit(ls):#function to make a singletone default matrix
 
 
 def linear_equation_solving(ls, va):
-    column = 0
-    row = 0
-    for i in range(row, len(ls)-1):#gaussian low elimination
-        for j in range(column, len(ls)):
+    ordering_matrix(ls, va)
+    for i in range(len(ls)):#gaussian low elimination
+        for j in range(len(ls)):
             temp_ls2 = make_matrix_unit(ls)
             if i != j:
                 temp_ls2[j][i] = -ls[j][i]
+            elif ls[j][i] == 0:
+                continue
             else:
-                temp_ls2[j][i] = 1 / ls[j][i]
+                if ls[j][i] != 0:
+                    temp_ls2[j][i] = 1 / ls[j][i]
             ls = matrix_mul(temp_ls2, ls)
             va = matrix_mul(temp_ls2, va)
             print(print_mat(ls), print_mat(va))
-        column += 1
-        row += 1
     answer = [0 for i in range(len(va))]#vector of answers
     answer[-1] = va[-1]
     for i in range(len(ls)-2, -1, -1):#loops to find the answers in linear equations system
