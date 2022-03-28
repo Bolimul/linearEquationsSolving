@@ -10,10 +10,15 @@ def print_mat(ls):#print the matrix
         print(f'{i}')
     print('\n')
 
+def absolute(num):
+    if num < 0:
+        return -num
+    return num
+
 def ordering_matrix(m1, m2):
     for j in range(len(m1)):
         for i in range(j, len(m1)):
-            if abs(m1[i][j]) > abs(m1[j][j]):
+            if absolute(m1[i][j]) > absolute(m1[j][j]):
 
                 temp_list = make_matrix_unit(m1)
                 temp_list1 = temp_list[j]
