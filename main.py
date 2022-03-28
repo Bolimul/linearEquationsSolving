@@ -1,8 +1,8 @@
-eq = [[567, -87, 45],
-     [1, 0, 123],
-     [-9.99, 7, 4]]#the main matrix
+eq = [[0.04, 0.01, -0.01],
+     [0.2, 0.5, -0.2],
+     [1, 2, 4]]#the main matrix
 
-va1 = [1, 4, 1]#vector b in Ax=b
+va1 = [0.06, 0.3, 11]#vector b in Ax=b
 
 
 def print_mat(ls):#print the matrix
