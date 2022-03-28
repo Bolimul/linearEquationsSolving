@@ -87,7 +87,9 @@ def make_matrix_unit(ls):#function to make a singletone default matrix
 
 
 def linear_equation_solving(ls, va):
+    print("Ordering according to pivot")
     ordering_matrix(ls, va)
+    print("Ordering according to pivot ended")
     for i in range(len(ls)):#gaussian low elimination
         for j in range(i, len(ls)):
             temp_ls2 = make_matrix_unit(ls)
